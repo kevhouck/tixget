@@ -1,0 +1,53 @@
+  <ion-navbar *navbar>
+    <ion-title>Matches</ion-title>
+  </ion-navbar>
+
+<ion-content>
+    <ion-refresher
+            (refresh)="refresh($event, refresher)">
+        <ion-refresher-content
+                pullingIcon="arrow-down"
+                pullingText="Pull to Refresh"
+                refreshingSpinner="circles"
+                refreshingText="Refreshing">
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <ion-list no-lines>
+
+        <ion-item *ngFor="#match of matches | async">
+            <ion-card>
+                <ion-card-header>
+                    For Event: {{match.event.name}}
+                </ion-card-header>
+                <ion-card-content>
+                    <!-- Display match properties in here-->
+                    <p style="font-size: 14px">Venue: {{match.event.loc_description}}</p>
+                    <p style="font-size: 14px">When: {{match.event.time.toDateString()}}</p>
+                    <div *ngIf="match.buyer.id == user.id">
+                        <p style="font-size: 14px">You are the buyer</p>
+                    </div>
+                    <div *ngIf="match.seller.id == user.id">
+                        <p style="font-size: 14px">You are the seller</p>
+                    </div>
+                    <p style="font-size: 14px">State: {{match.state}}</p>
+
+                    <div *ngIf="match.state  == 'PROPOSED' || match.state == 'ONE_ACCEPTED' || match.state == 'MEET_SETUP'">
+                        <button>Cancel Match</button>
+                    </div>
+
+                    <div *ngIf="match.state == 'ONE_ACCEPTED' && ((match.buyer.id == user.id && match.buyer_state == 'WAITING') || (match.seller.id == user.id && match.seller_state == 'WAITING'))">
+                        <button (click)="viewOneAcceptedMatch(match)">View Match From Other User</button>
+                    </div>
+                    <div *ngIf="match.meet_requests.length != 0">
+                        <div *ngIf="match.meet_requests[match.meet_requests.length-1].awaiting_user_state == 'WAITING'
+                    && match.meet_requests[match.meet_requests.length-1].awaiting_user.id == user.id">
+                            <button (click)="viewProposedMeetRequest(match, match.meet_requests[match.meet_requests.length-1])">View Received Meet Request</button>
+                        </div>
+                    </div>
+                    <!-- Show button is user has a meet request waiting for them to accept -->
+                </ion-card-content>
+            </ion-card>
+        </ion-item>
+    </ion-list>
+</ion-content>

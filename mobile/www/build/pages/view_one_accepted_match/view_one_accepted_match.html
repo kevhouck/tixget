@@ -1,0 +1,40 @@
+<ion-navbar hideBackButton *navbar></ion-navbar>
+
+
+<ion-content>
+    <h1 style="position: relative; text-align: center; margin-top: 25px; font-size: 20px;">Match Found!</h1>
+    <div *ngIf="match.buyer.id == user.id">
+        <p style="margin-left: 4.5%; margin-right: 4.5%">We've found you a seller! They've already accepted your match, so if you accept you'll be prompted to enter a meeting location and time! If you reject we'll search for more matches based on your old request</p>
+        <ion-list>
+
+            <ion-item>
+                Proposed Seller's Rating: {{match.seller.seller_rating}}
+            </ion-item>
+            <ion-item>
+                Proposed Price: {{match.buy_request.price_exact}}
+            </ion-item>
+            <ion-item style="text-align: center;">
+                <button (click)="accept()">Accept</button>
+                <button style="margin-left: 5%;" (click)="reject()">Reject</button>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <div *ngIf="match.seller.id == user.id">
+        <p style="margin-left: 4.5%; margin-right: 4.5%">We've found you a buyer! They've already accepted your match, so if you accept you'll be prompted to enter a meeting location and time! If you reject we'll search for more matches based on your old request</p>
+
+        <ion-list>
+            <ion-item>
+                Proposed Buyers's Rating: {{match.seller.seller_rating}}
+            </ion-item>
+            <ion-item>
+                Proposed Price: {{match.buy_request.price_exact}}
+            </ion-item>
+            <ion-item style="text-align: center;">
+                <button (click)="accept()">Accept</button>
+                <button style="margin-left: 5%;" (click)="reject()">Reject</button>
+            </ion-item>
+        </ion-list>
+    </div>
+
+</ion-content>

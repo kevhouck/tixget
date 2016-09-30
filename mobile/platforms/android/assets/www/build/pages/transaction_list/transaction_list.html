@@ -1,0 +1,36 @@
+  <ion-navbar *navbar>
+    <ion-title>Transactions</ion-title>
+  </ion-navbar>
+
+<ion-content>
+    <ion-refresher
+            (refresh)="refresh($event, refresher)">
+        <ion-refresher-content
+                pullingIcon="arrow-down"
+                pullingText="Pull to Refresh"
+                refreshingSpinner="circles"
+                refreshingText="Refreshing">
+        </ion-refresher-content>
+    </ion-refresher>
+    <ion-list no-lines>
+
+        <ion-item *ngFor="#transaction of transactions | async">
+        <ion-card>
+            <ion-card-header>
+                For Event: {{transaction.match.event.name}}
+            </ion-card-header>
+            <ion-card-content>
+                <p style="font-size: 14px">Venue: {{transaction.match.event.loc_description}}</p>
+                <p style="font-size: 14px">When: {{transaction.match.event.time.toDateString()}}</p>
+                <p style="font-size: 14px">State: {{transaction.state}}</p>
+                <div *ngIf="transaction.state == 'OPENED'">
+                    <button (click)="confirm(transaction)">Confirm</button>
+                </div>
+                <div *ngIf="transaction.state == 'OPENED'">
+                    <button (click)="viewMeetingDetails(transaction)">View Meeting Details</button>
+                </div>
+            </ion-card-content>
+        </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>

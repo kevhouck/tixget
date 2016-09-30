@@ -1,0 +1,14 @@
+<ion-navbar hideBackButton *navbar></ion-navbar>
+
+<ion-content>
+    <div style="text-align: center;">
+        <p style="margin-left: 4.5%; margin-right: 4.5%;">Enter the code shown on the buyers screen then click confirm to make the sale</p>
+        <p style="margin-left: 4.5%; margin-right: 4.5%;">IMPORTANT: You will be shown a confirmation screen to let you know you have been paid</p>
+        <ion-list>
+            <ion-item>
+                <ion-input [(ngModel)]="entered_secret" placeholder="Secret Phrase" type="text"></ion-input>
+            </ion-item>
+            <button style="margin-top: 5%;" (click)="submitSecret()">Confirm Transaction</button>
+        </ion-list>
+    </div>
+</ion-content>

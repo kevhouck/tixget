@@ -1,0 +1,19 @@
+<!--<ion-toolbar>
+  <ion-buttons end>
+    <button ng-click="goSearch()">
+      <ion-icon name="search"></ion-icon>
+    </button>
+    <button ng-click="goNotifications()">
+      <ion-icon name="notifications"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-toolbar> -->
+
+<!--Solid tabs-->
+<ion-tabs>
+  <ion-tab [root]="tab1Root" tabTitle="Browse Events" tabIcon="apps"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Buy/Sell Requests" tabIcon="pricetag"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="Matches" tabIcon="checkmark"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="Transactions" tabIcon="cash"></ion-tab>
+  <ion-tab [root]="tab5Root" tabTitle="User" tabIcon="ios-person"></ion-tab>
+</ion-tabs>

@@ -1,0 +1,20 @@
+<ion-navbar *navbar>
+    <ion-title>Buy/Sell</ion-title>
+</ion-navbar>
+
+<!--Same points as the buy request page-->
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+            {{event.name}}
+        </ion-card-header>
+        <ion-card-content>
+            <p>Price {{sell_request.price_min}}</p>
+            <p>Location {{sell_request.loc_lat}}{{sell_request.loc_long}}</p>
+            <p>Range {{sell_request.loc_range}}</p>
+        </ion-card-content>
+    </ion-card>
+    <div id="new_request" style="text-align: center;">
+        <button style="position: relative; margin-top: 25px;">Edit</button>
+    </div>
+</ion-content>

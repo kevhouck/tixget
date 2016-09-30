@@ -1,0 +1,51 @@
+  <ion-navbar *navbar>
+    <ion-title>Buy and Sell Requests</ion-title>
+  </ion-navbar>
+
+<ion-content>
+    <ion-refresher
+            (refresh)="refresh($event, refresher)">
+        <ion-refresher-content
+                pullingIcon="arrow-down"
+                pullingText="Pull to Refresh"
+                refreshingSpinner="circles"
+                refreshingText="Refreshing">
+        </ion-refresher-content>
+    </ion-refresher>
+    <ion-list no-lines>
+        <ion-item *ngFor="#buy_request of buy_requests | async">
+            <ion-card>
+                <ion-card-header>
+                    For Event: {{buy_request.event.name}}
+                </ion-card-header>
+                <ion-card-content>
+                    <p style="font-size: 14px;">Buy Request</p>
+                    <p style="font-size: 14px;">Venue: {{buy_request.event.loc_description}}</p>
+                    <p style="font-size: 14px;">Event Date: {{buy_request.event.time.toDateString()}}</p>
+                    <p style="font-size: 14px;">Exact Price: {{buy_request.price_exact}}</p>
+                    <p style="font-size: 14px;">State: {{buy_request.state}}</p>
+                    <div *ngIf="buy_request.state == 'WAITING' || buy_request.state == 'IN_PROPOSED_MATCH'">
+                        <button style="margin-left: 30%;">Cancel Request</button>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+        </ion-item>
+        <ion-item *ngFor="#sell_request of sell_requests | async">
+            <ion-card>
+                <ion-card-header>
+                    For Event: {{sell_request.event.name}}
+                </ion-card-header>
+                <ion-card-content>
+                    <p style="font-size: 14px;">Sell Request</p>
+                    <p style="font-size: 14px;">Venue: {{sell_request.event.loc_description}}</p>
+                    <p style="font-size: 14px;">Event Date: {{sell_request.event.time.toDateString()}}</p>
+                    <p style="font-size: 14px;">Minimum Price: {{sell_request.price_min}}</p>
+                    <p style="font-size: 14px;">State: {{sell_request.state}}</p>
+                    <div *ngIf="sell_request.state == 'WAITING' || sell_request.state == 'IN_PROPOSED_MATCH'">
+                        <button style="margin-left: 30%;">Cancel Request</button>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+        </ion-item>
+    </ion-list>
+</ion-content>

@@ -1,0 +1,74 @@
+<ion-navbar *navbar>
+    <ion-title>Search</ion-title>
+</ion-navbar>
+
+<!--So I am assuming this is what will be dropping down when the search button is selected.
+I would like to know how to make a subcategory appear under certain conditions that are indicated
+by the user's selection from the main category. I would also like to know when we want to 
+start writing placeholder data so that we know all the categories we will need for the demo.-->
+<ion-content>
+    <ion-list style="margin-top: 75px">
+        <ion-item>
+            <ion-label>Category</ion-label>
+            <ion-select [(ngModel)]="category" multiple="true">
+                <ion-option value="music">Music</ion-option>
+                <ion-option value="sports">Sports</ion-option>
+                <ion-option value="shows">Shows</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item *ngIf="music">
+            <ion-label>Subcategory</ion-label>
+            <ion-select [(ngModel)]="subcategory" multiple="true">
+                <ion-option value="hip_hop">Hip-hop</ion-option>
+                <ion-option value="rock">Rock</ion-option>
+                <ion-option value="country">Country</ion-option>
+                <ion-option value="popmusic">Pop</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Location</ion-label>
+            <ion-select [(ngModel)]="map">
+                <ion-option value="map">Map</ion-option>
+            </ion-select>
+        </ion-item>
+        <div class="item range range-positive">
+            <ion-label>Range</ion-label>
+            <p>0mi</p>
+            <input type="range" name="volume" min="0" max="100" value="33">
+            <p>500mi</p>
+        </div>
+        <ion-item>
+            <ion-label>Date</ion-label>
+            <ion-select [(ngModel)]="month">
+                <ion-option value="01">January</ion-option>
+                <ion-option value="02">February</ion-option>
+                <ion-option value="03">March</ion-option>
+                <ion-option value="04">April</ion-option>
+                <ion-option value="05">May</ion-option>
+                <ion-option value="06">June</ion-option>
+                <ion-option value="07">July</ion-option>
+                <ion-option value="08">August</ion-option>
+                <ion-option value="09">September</ion-option>
+                <ion-option value="10">October</ion-option>
+                <ion-option value="11">November</ion-option>
+                <ion-option value="12" checked="true">December</ion-option>
+            </ion-select>
+            <ion-select [(ngModel)]="year">
+                <ion-option>1989</ion-option>
+                <ion-option>1990</ion-option>
+                <ion-option>1991</ion-option>
+                <ion-option>1992</ion-option>
+                <ion-option>1993</ion-option>
+                <ion-option checked="true">1994</ion-option>
+                <ion-option>1995</ion-option>
+                <ion-option>1996</ion-option>
+                <ion-option>1997</ion-option>
+                <ion-option>1998</ion-option>
+                <ion-option>1999</ion-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
+    <div id="new_request" style="text-align: center;">
+        <button large style="position: relative; margin-top: 50px;">Search</button>
+    </div>
+</ion-content>

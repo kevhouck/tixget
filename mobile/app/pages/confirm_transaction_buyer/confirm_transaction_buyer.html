@@ -1,0 +1,11 @@
+<ion-navbar hideBackButton *navbar></ion-navbar>
+
+
+<ion-content>
+    <div style="text-align: center;">
+    <p style="margin-left: 4.5%; margin-right: 4.5%;">Have the user enter this on there screen. When they get a confirmation tap Done below</p>
+    <p style="margin-left: 4.5%; margin-right: 4.5%;">{{ secret | async }}</p>
+
+    <button (click)="done()">Done</button>
+    </div>
+</ion-content>

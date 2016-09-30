@@ -1,0 +1,15 @@
+<ion-navbar hideBackButton *navbar></ion-navbar>
+
+<ion-content>
+    <h1 style="position: relative; text-align: center; margin-bottom: 5%; font-size: 19px;">The other user has proposed to meet at this location and time</h1>
+    <div id="map2"></div>
+    <ion-list>
+        <ion-item>
+            When: {{time.toLocaleString()}}
+        </ion-item>
+        <ion-item style="text-align: center;">
+            <button (click)="accept()">Accept</button>
+            <button style="margin-left: 8%;" (click)="reject()">Reject</button>
+        </ion-item>
+    </ion-list>
+</ion-content>

@@ -1,0 +1,21 @@
+<ion-navbar *navbar>
+    <ion-title>User</ion-title>
+    <ion-button style="float: right;" ng-click="goNotifications()">Edit</ion-button>
+</ion-navbar>
+
+
+<ion-content>
+    <ion-list>
+        <ion-item>
+        Your Buyer Rating: {{user.buyer_rating}}
+        </ion-item>
+        <ion-item>
+        Your Seller Rating: {{user.seller_rating}}
+        </ion-item>
+        <ion-item>
+        Stripe ID: {{user.stripe_id}}
+        </ion-item>
+    </ion-list>
+</ion-content>
+
+

@@ -1,0 +1,40 @@
+<ion-navbar *navbar>
+  <ion-title>Transactions</ion-title>
+</ion-navbar>
+
+<!--Is this where users can get a more in depth look at their transaction in their transactions list?
+Is this where reciept-like information should be stored? Is this where message history and current
+message are located. I am assuming this is the page where we want the messaging system. 
+I just have some placeholder code, but I'm sure it will be more difficult to integrate the 
+chat since their are bounds to when the chat can and cannot be active. Im assuming the chat 
+will only work until the transaction has ended and then will become locked. So I could just 
+use some guidance on the direction this page is supposed to be going with the whole 
+messaging system and transaction information.-->
+<ion-content padding>
+    <ion-card>
+        <ion-card-header>
+            {{event.name}}
+        </ion-card-header>
+        <ion-card-content>
+            <p>{{transaction.loc_lat}}{{transaction.loc_long}}</p>
+            <p>{{transaction.time}}</p>
+            <div *ngIf="buy_request_id">
+                <p>Price {{buy_request.price_exact}}</p>
+            </div>
+            <div *ngIf="sell_request_id">
+                <p>Price {{sell_request.price_min}}</p>
+            </div>
+            <p>{{transaction.state}}</p>
+        </ion-card-content>
+    </ion-card>
+    <ion-list>
+        <ion-item *ngFor="#message of messages">{{message}}</ion-item>
+    </ion-list>
+</ion-content>
+<ion-footer-bar>
+    <ion-input>
+        <input type="text" [(ngModel)]="chatBox" placeholder="Message..." />
+        <button (click)="send(chatBox)">Send</button>
+    </ion-input>
+</ion-footer-bar>
+</ion-content>

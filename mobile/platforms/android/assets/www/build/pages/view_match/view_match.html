@@ -1,0 +1,32 @@
+<!--May not need this page if doing accept and decline from list of matches-->
+<ion-navbar *navbar>
+    <ion-title>Buy/Sell</ion-title>
+</ion-navbar>
+
+<!--Is this page for a more in depth look at a match that was selected from the match list?
+Is this where you want users to either decline or accept the match?-->
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+            {{event.name}}
+        </ion-card-header>
+        <ion-card-content>
+            <div *ngIf="buy_request_id">
+                <p>Buyer Rating {{user_public.buyer_rating}}</p>
+                <p>Price {{buy_request.price_exact}}</p>
+            </div>
+            <div *ngIf="sell_request_id">
+                <p>Seller Rating {{user_public.seller_rating}}</p>
+                <p>Price {{sell_request.price_min}}</p>
+            </div>
+        </ion-card-content>
+        <ion-segment [(ngModel)]="respond_request">
+            <ion-segment-button value="decline">
+                Decline
+            </ion-segment-button>
+            <ion-segment-button value="accept">
+                Accept
+            </ion-segment-button>
+        </ion-segment>
+    </ion-card>
+</ion-content>

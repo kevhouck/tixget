@@ -1,0 +1,16 @@
+<ion-navbar *navbar></ion-navbar>
+
+
+<ion-content>
+    <h1 style="position: relative; text-align: center; margin-bottom: 5%; font-size: 19px;">Select a location and time to meet:</h1>
+    <div id="map"></div>
+    <ion-list>
+        <ion-item>
+            <ion-label>When</ion-label>
+            <ion-input type="datetime-local" [(ngModel)]="time"></ion-input>
+        </ion-item>
+        <ion-item style="text-align: center;">
+            <button (click)="submit()">Submit</button>
+        </ion-item>
+    </ion-list>
+</ion-content>

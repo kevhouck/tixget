@@ -1,0 +1,19 @@
+<ion-navbar *navbar>
+  <ion-title>Notifications</ion-title>
+</ion-navbar>
+
+<!--Not sure how the notification system is going to work so just barebones here-->
+<ion-content>
+    <ion-list>
+        <ion-item *ngFor="#notification of notifications" (click)="itemSelected(item)">
+            <ion-card>
+                <ion-card-header>
+                    Notification Header
+                </ion-card-header>
+                <ion-card-content>
+                    Notification Description
+                </ion-card-content>
+            </ion-card>
+        </ion-item>
+    </ion-list>
+</ion-content>

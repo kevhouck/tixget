@@ -1,0 +1,21 @@
+<ion-navbar *navbar>
+  <ion-title>Buy/Sell</ion-title>
+</ion-navbar>
+
+<!--I am assuming this page is for a more in depth look at the buy request the user just made?
+I am also assuming this is where users can go to edit their buy request-->
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+            {{event.name}}
+        </ion-card-header>
+        <ion-card-content>
+            <p>Price {{buy_request.price_exact}}</p>
+            <p>Location {{buy_request.loc_lat}}{{buy_request.loc_long}}</p>
+            <p>Range {{buy_request.loc_range}}</p>
+        </ion-card-content>
+    </ion-card>
+    <div id="new_request" style="text-align: center;">
+        <button style="position: relative; margin-top: 25px;">Edit</button>
+    </div>
+</ion-content>

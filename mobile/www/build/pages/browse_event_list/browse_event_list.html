@@ -1,0 +1,36 @@
+  <ion-navbar *navbar>
+    <ion-title>Browse Events</ion-title>
+  </ion-navbar>
+
+<ion-content>
+    <ion-refresher
+            (refresh)="refresh($event, refresher)">
+        <ion-refresher-content
+                pullingIcon="arrow-down"
+                pullingText="Pull to Refresh"
+                refreshingSpinner="circles"
+                refreshingText="Refreshing">
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <ion-list no-lines>
+        <ion-item *ngFor="#event of events | async">
+        <ion-card>
+            <ion-card-header style="text-align: center; margin-button: 2%; font-size: 19px;">
+                {{event.name}}
+            </ion-card-header>
+            <ion-card-content>
+                <p style="font-size: 14px">Category: {{event.category}}</p>
+                <p style="font-size: 14px">Subcategory: {{event.subcategory}}</p>
+                <p style="font-size: 14px">Description: {{event.description}}</p>
+                <p style="font-size: 14px">Venue: {{event.loc_description}}</p>
+                <p style="font-size: 14px">When: {{event.time.toDateString()}}</p>
+                <div style="text-align: center; margin-top: 5%;">
+                    <button (click)="createSellRequestOnEvent(event)">Sell Ticket</button>
+                    <button style="margin-left: 8%;" (click)="createBuyRequestOnEvent(event)">Buy Ticket</button>
+                </div>
+            </ion-card-content>
+        </ion-card>
+        </ion-item>
+    </ion-list>
+</ion-content>

@@ -1,0 +1,19 @@
+<ion-navbar *navbar></ion-navbar>
+
+<ion-content>
+    <h1 style="margin-left: 4.5%; margin-right: 4.5%;">Sell Ticket For {{event.name}}</h1>
+    <p style="margin-left: 4.5%; margin-right: 4.5%;">We'll use your location to match you with a buyer. Please select the minimum price you're willing to accept and how far you're willing to travel to meet a buyer</p>
+    <ion-list>
+        <ion-item>
+            <ion-label>Minimum Price ($)</ion-label>
+            <ion-input type="number" [(ngModel)]="price_min"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Range (mi)</ion-label>
+            <ion-input type="number" [(ngModel)]="loc_range"></ion-input>
+        </ion-item>
+        <ion-item>
+            <button style="margin-left: 40%;"(click)="submitSellRequest()">Submit</button>
+        </ion-item>
+    </ion-list>
+</ion-content>
